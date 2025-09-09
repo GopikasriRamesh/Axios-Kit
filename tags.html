@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-ag">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badges & Tags - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="standard">
+                    <h3 class="example-group__title">Standard Badges</h3>
+                    <div class="example-group__item">
+                        <span class="badge">Default</span>
+                        <span class="badge badge--success">Success</span>
+                    </div>
+                </div>
+
+                <div class="example-group" data-code-id="pill">
+                    <h3 class="example-group__title">Pill Badges</h3>
+                    <div class="example-group__item">
+                        <span class="badge badge--pill">Default</span>
+                        <span class="badge badge--pill badge--error">Error</span>
+                    </div>
+                </div>
+                
+                 <div class="example-group" data-code-id="status">
+                    <h3 class="example-group__title">Status Badges</h3>
+                    <div class="example-group__item">
+                       <span class="badge badge--warning">Pending</span>
+                       <span class="badge badge--info">In Progress</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Badges & Tags</h1>
+                    <p>Badges and tags are used to highlight an item's status for quick recognition. Use them to label, categorize, or count items.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                        </div>
+                        <button class="copy-button">
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="standard"><code class="language-html">&lt;span class="badge"&gt;Default&lt;/span&gt;
+&lt;span class="badge badge--success"&gt;Success&lt;/span&gt;</code></pre>
+                            <pre data-code-id="pill" style="display: none;"><code class="language-html">&lt;span class="badge badge--pill"&gt;Default&lt;/span&gt;
+&lt;span class="badge badge--pill badge--error"&gt;Error&lt;/span&gt;</code></pre>
+                            <pre data-code-id="status" style="display: none;"><code class="language-html">&lt;span class="badge badge--warning"&gt;Pending&lt;/span&gt;
+&lt;span class="badge badge--info"&gt;In Progress&lt;/span&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="standard"><code class="language-css">.badge {
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--border-radius);
+  background-color: var(--subtle-bg);
+  color: var(--secondary-text);
+}</code></pre>
+                            <pre data-code-id="pill" style="display: none;"><code class="language-css">.badge--pill {
+  border-radius: 50px; /* Creates the pill shape */
+}</code></pre>
+                            <pre data-code-id="status" style="display: none;"><code class="language-css">/* Uses notification color variables */
+.badge--success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+.badge--error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+/* etc. */</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+       const exampleGroups = document.querySelectorAll('.example-group');const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');exampleGroups.forEach(group => {group.addEventListener('click', () => {exampleGroups.forEach(g => g.classList.remove('active'));group.classList.add('active');const codeId = group.dataset.codeId;allCodeBlocks.forEach(block => block.style.display = 'none');const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);relevantCodeBlocks.forEach(block => block.style.display = 'block');});});const tabsContainer = document.querySelector('.code-snippet__tabs');const contentPanels = document.querySelectorAll('.code-snippet__content');const copyButton = document.querySelector('.copy-button');const copyTextarea = document.getElementById('copy-textarea');if (tabsContainer) {tabsContainer.addEventListener('click', (e) => {if (e.target.tagName === 'BUTTON') {const targetTab = e.target.dataset.tab;tabsContainer.querySelector('.active').classList.remove('active');e.target.classList.add('active');contentPanels.forEach(panel => {panel.classList.remove('active');if (panel.dataset.content === targetTab) {panel.classList.add('active');}});}});}if (copyButton) {copyButton.addEventListener('click', () => {const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';if (codeToCopy) {copyTextarea.value = codeToCopy;copyTextarea.select();try {document.execCommand('copy');const copyButtonText = copyButton.querySelector('span');copyButtonText.innerText = 'Copied!';setTimeout(() => {copyButtonText.innerText = 'Copy';}, 2000);} catch (err) {console.error('Failed to copy text: ', err);}}});}
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="standard">
+                    <h3 class="example-group__title">Standard Accordion</h3>
+                    <div class="example-group__item--column">
+                        <div class="accordion">
+                            <div class="accordion__item">
+                                <input type="checkbox" name="accordion-example" id="accordion1-example" class="accordion__input">
+                                <label for="accordion1-example" class="accordion__label">Section One</label>
+                                <div class="accordion__content">
+                                    <p>This is the content for the first section. You can put any HTML content here.</p>
+                                </div>
+                            </div>
+                            <div class="accordion__item">
+                                <input type="checkbox" name="accordion-example" id="accordion2-example" class="accordion__input" checked>
+                                <label for="accordion2-example" class="accordion__label">Section Two</label>
+                                <div class="accordion__content">
+                                    <p>This is the content for the second section. The `checked` attribute on the input makes this section open by default.</p>
+                                </div>
+                            </div>
+                             <div class="accordion__item">
+                                <input type="checkbox" name="accordion-example" id="accordion3-example" class="accordion__input">
+                                <label for="accordion3-example" class="accordion__label">Section Three</label>
+                                <div class="accordion__content">
+                                    <p>This is the content for the third section.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Accordion</h1>
+                    <p>Accordions allow users to toggle the visibility of content sections. This pure CSS version uses hidden checkboxes for state management and `max-height` for a smooth animation.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                            <button class="code-snippet__tab" data-tab="js">JS (Optional)</button>
+                        </div>
+                        <button class="copy-button">
+                           <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="standard"><code class="language-html">&lt;div class="accordion"&gt;
+  &lt;!-- Accordion Item --&gt;
+  &lt;div class="accordion__item"&gt;
+    &lt;input type="checkbox" name="my-accordion" id="accordion1" class="accordion__input"&gt;
+    &lt;label for="accordion1" class="accordion__label"&gt;Section One&lt;/label&gt;
+    &lt;div class="accordion__content"&gt;
+      &lt;p&gt;Content for the first section.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Another Item (open by default) --&gt;
+  &lt;div class="accordion__item"&gt;
+    &lt;input type="checkbox" name="my-accordion" id="accordion2" class="accordion__input" checked&gt;
+    &lt;label for="accordion2" class="accordion__label"&gt;Section Two&lt;/label&gt;
+    &lt;div class="accordion__content"&gt;
+      &lt;p&gt;Content for the second section.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="standard"><code class="language-css">.accordion__input {
+  display: none; /* Hide the checkbox */
+}
+.accordion__label {
+  display: block;
+  padding: var(--space-sm);
+  cursor: pointer;
+  /* ... more styles in main.css ... */
+}
+.accordion__content {
+  overflow: hidden;
+  max-height: 0; /* Hidden by default */
+  transition: max-height 0.3s ease-out;
+}
+/* Show the content when the checkbox is checked */
+.accordion__input:checked ~ .accordion__content {
+  max-height: 1000px; /* Animate to a large height */
+}</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="js">
+                            <pre data-code-id="standard"><code class="language-javascript">// For a more accessible accordion, a
+// JavaScript approach is recommended.
+
+const accordionLabels = document.querySelectorAll('.accordion__label');
+
+accordionLabels.forEach(label => {
+  label.addEventListener('click', () => {
+    // Toggle the 'active' class on the parent item
+    const item = label.parentElement;
+    item.classList.toggle('active');
+
+    // Toggle the content's visibility
+    const content = label.nextElementSibling;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+});</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+       const exampleGroups = document.querySelectorAll('.example-group');const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');exampleGroups.forEach(group => {group.addEventListener('click', () => {exampleGroups.forEach(g => g.classList.remove('active'));group.classList.add('active');const codeId = group.dataset.codeId;allCodeBlocks.forEach(block => block.style.display = 'none');const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);relevantCodeBlocks.forEach(block => block.style.display = 'block');});});const tabsContainer = document.querySelector('.code-snippet__tabs');const contentPanels = document.querySelectorAll('.code-snippet__content');const copyButton = document.querySelector('.copy-button');const copyTextarea = document.getElementById('copy-textarea');if (tabsContainer) {tabsContainer.addEventListener('click', (e) => {if (e.target.tagName === 'BUTTON') {const targetTab = e.target.dataset.tab;tabsContainer.querySelector('.active').classList.remove('active');e.target.classList.add('active');contentPanels.forEach(panel => {panel.classList.remove('active');if (panel.dataset.content === targetTab) {panel.classList.add('active');}});}});}if (copyButton) {copyButton.addEventListener('click', () => {const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';if (codeToCopy) {copyTextarea.value = codeToCopy;copyTextarea.select();try {document.execCommand('copy');const copyButtonText = copyButton.querySelector('span');copyButtonText.innerText = 'Copied!';setTimeout(() => {copyButtonText.innerText = 'Copy';}, 2000);} catch (err) {console.error('Failed to copy text: ', err);}}});}
+    </script>
+</body>
+</html>

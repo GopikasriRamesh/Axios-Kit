@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <clipPath id="curved-card-shape" clipPathUnits="objectBoundingBox">
+                <path d="M 0,0 H 0.8 C 0.9,0, 1,0.1, 1,0.2 V 1 H 0 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+    <a href="index.html" class="sidebar__logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 7L12 12M22 7L12 12M12 22V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Axiom Kit</span>
+    </a>
+    <nav class="sidebar__nav">
+        <h2 class="sidebar__title">Components</h2>
+        <ul>
+            <li><a href="#" class="active">All Components</a></li>
+            <li><a href="buttons.html">Buttons</a></li>
+            <li><a href="typography.html">Typography</a></li>
+            <li><a href="form-elements.html">Form Elements</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="tags.html">Badges & Tags</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="navigation-bar.html">Navigation Bar</a></li>
+            <li><a href="modal.html">Modal</a></li>
+            <li><a href="tooltip.html">Tooltip</a></li>
+            <li><a href="tabs.html">Tabs</a></li>
+            <li><a href="accordion.html">Accordion</a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+        </ul>
+    </nav>
+</aside>
+
+       <main class="component-grid">
+    <h1 class="page-title">Components</h1>
+    
+    <h2 class="component-section-title">Foundational Elements</h2>
+    <div class="component-section">
+        <a href="buttons.html" class="component-card">
+            <div class="component-card__visual visual--button">
+                <button class="btn btn--primary" style="pointer-events: none;">Get Started</button>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Buttons</h3>
+                <p class="component-card__description">Interactive elements for user actions and events.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="typography.html" class="component-card">
+            <div class="component-card__visual visual--typography">
+                <span class="type-preview">Aa</span>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Typography</h3>
+                <p class="component-card__description">Styles for headings, paragraphs, and lists.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="form-elements.html" class="component-card">
+            <div class="component-card__visual visual--forms">
+                <div class="form-preview"></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Form Elements</h3>
+                <p class="component-card__description">Inputs, checkboxes, and dropdowns for user data.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+    </div>
+
+    <h2 class="component-section-title">Informational Components</h2>
+    <div class="component-section">
+        <a href="alerts.html" class="component-card">
+            <div class="component-card__visual visual--alert">
+                <div class="alert-preview">Success!</div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Alerts</h3>
+                <p class="component-card__description">Contextual feedback messages for user actions.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="tags.html" class="component-card">
+            <div class="component-card__visual visual--badge">
+                <div class="badge-preview">New Update</div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Badges & Tags</h3>
+                <p class="component-card__description">Labels for status, counts, or keywords.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="card.html" class="component-card">
+            <div class="component-card__visual visual--card-comp">
+                <div class="card-comp-preview"></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Card</h3>
+                <p class="component-card__description">A container for grouping related content.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+    </div>
+
+    <h2 class="component-section-title">Interactive & Layout</h2>
+    <div class="component-section">
+        <a href="navigation-bar.html" class="component-card">
+            <div class="component-card__visual visual--nav">
+                <div class="nav-preview"><span></span><span></span><span></span></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Navigation Bar</h3>
+                <p class="component-card__description">A responsive header for site navigation.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="modal.html" class="component-card">
+            <div class="component-card__visual visual--modal">
+                <div class="modal-preview"></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Modal</h3>
+                <p class="component-card__description">A pop-up window that appears over content.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="tooltip.html" class="component-card">
+            <div class="component-card__visual visual--tooltip">
+                <div class="tooltip-preview">?</div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Tooltip</h3>
+                <p class="component-card__description">A small hint that appears on hover.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="tabs.html" class="component-card">
+            <div class="component-card__visual visual--tabs">
+                <div class="tabs-preview"><span></span><span></span><span></span></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Tabs</h3>
+                <p class="component-card__description">Switch between different content views.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="accordion.html" class="component-card">
+            <div class="component-card__visual visual--accordion">
+                <div class="accordion-preview"></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Accordion</h3>
+                <p class="component-card__description">A component to show and hide content sections.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+        <a href="pagination.html" class="component-card">
+            <div class="component-card__visual visual--pagination">
+                <div class="pagination-preview"><span></span><span></span><span></span></div>
+            </div>
+            <div class="component-card__body">
+                <h3 class="component-card__title">Pagination</h3>
+                <p class="component-card__description">Navigation for lists of content.</p>
+                <div class="component-card__arrow"></div>
+            </div>
+        </a>
+    </div>
+</main>
+    </div>
+    
+</body>
+</html>

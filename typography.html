@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="headings">
+                    <h3 class="example-group__title">Headings</h3>
+                    <div class="example-group__item--column">
+                        <h1>Heading 1</h1>
+                        <h2>Heading 2</h2>
+                        <h3>Heading 3</h3>
+                    </div>
+                </div>
+
+                <div class="example-group" data-code-id="body">
+                    <h3 class="example-group__title">Body & Link</h3>
+                    <div class="example-group__item--column">
+                        <p>This is a paragraph of body text. It uses the primary body font for maximum readability. It can also include <a>inline links</a> that are clearly distinguished from the rest of the text.</p>
+                    </div>
+                </div>
+                
+                 <div class="example-group" data-code-id="blockquote">
+                    <h3 class="example-group__title">Blockquote</h3>
+                    <div class="example-group__item--column">
+                        <blockquote>"The best way to predict the future is to invent it."</blockquote>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Typography</h1>
+                    <p>Typography is the foundation of a clean and readable interface. These styles are applied globally and form the base for all text content.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                        </div>
+                        <button class="copy-button">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="headings"><code class="language-html">&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;</code></pre>
+                            <pre data-code-id="body" style="display: none;"><code class="language-html">&lt;p&gt;This is a paragraph... with an &lt;a&gt;inline link&lt;/a&gt;.&lt;/p&gt;</code></pre>
+                            <pre data-code-id="blockquote" style="display: none;"><code class="language-html">&lt;blockquote&gt;"A quote from someone famous."&lt;/blockquote&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="headings"><code class="language-css">h1, h2, h3 {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  color: var(--primary-text);
+}
+h1 { font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }</code></pre>
+                            <pre data-code-id="body" style="display: none;"><code class="language-css">p {
+  font-family: var(--body-font);
+  font-size: var(--para-size);
+  color: var(--secondary-text);
+  line-height: var(--base-line-height);
+}
+a {
+  color: var(--primary-text);
+  font-weight: 700;
+}</code></pre>
+                            <pre data-code-id="blockquote" style="display: none;"><code class="language-css">blockquote {
+  border-left: 4px solid var(--border-color);
+  padding-left: var(--space-md);
+  margin-left: 0;
+  font-style: italic;
+  color: var(--secondary-text);
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <textarea id="copy-textarea" style="position: absolute; left: -9999px;"></textarea>
+    
+    <script>
+        // The existing JavaScript from buttons.html works perfectly here too!
+        const exampleGroups = document.querySelectorAll('.example-group');
+        const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');
+        exampleGroups.forEach(group => {
+            group.addEventListener('click', () => {
+                exampleGroups.forEach(g => g.classList.remove('active'));
+                group.classList.add('active');
+                const codeId = group.dataset.codeId;
+                allCodeBlocks.forEach(block => block.style.display = 'none');
+                const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);
+                relevantCodeBlocks.forEach(block => block.style.display = 'block');
+            });
+        });
+        const tabsContainer = document.querySelector('.code-snippet__tabs');
+        const contentPanels = document.querySelectorAll('.code-snippet__content');
+        const copyButton = document.querySelector('.copy-button');
+        const copyTextarea = document.getElementById('copy-textarea');
+        if (tabsContainer) {
+            tabsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const targetTab = e.target.dataset.tab;
+                    tabsContainer.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    contentPanels.forEach(panel => {
+                        panel.classList.remove('active');
+                        if (panel.dataset.content === targetTab) {
+                            panel.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+        if (copyButton) {
+            copyButton.addEventListener('click', () => {
+                const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');
+                const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';
+                if (codeToCopy) {
+                    copyTextarea.value = codeToCopy;
+                    copyTextarea.select();
+                    try {
+                        document.execCommand('copy');
+                        const copyButtonText = copyButton.querySelector('span');
+                        copyButtonText.innerText = 'Copied!';
+                        setTimeout(() => {
+                            copyButtonText.innerText = 'Copy';
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
