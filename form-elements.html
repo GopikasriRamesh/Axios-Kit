@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Elements - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="text-input">
+                    <h3 class="example-group__title">Text Input</h3>
+                    <div class="example-group__item--column">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter your name...">
+                    </div>
+                </div>
+
+                <div class="example-group" data-code-id="textarea">
+                    <h3 class="example-group__title">Textarea</h3>
+                    <div class="example-group__item--column">
+                        <label for="bio">Biography</label>
+                        <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                </div>
+                
+                 <div class="example-group" data-code-id="select">
+                    <h3 class="example-group__title">Select Dropdown</h3>
+                    <div class="example-group__item--column">
+                        <label for="role">Role</label>
+                        <select id="role">
+                            <option>Select a role...</option>
+                            <option>Designer</option>
+                            <option>Developer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="example-group" data-code-id="checkbox-radio">
+                    <h3 class="example-group__title">Checkbox & Radio</h3>
+                    <div class="example-group__item--column">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" class="custom-checkbox">
+                            <label for="terms">I agree to the terms</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" id="yes" name="confirm" class="custom-radio">
+                            <label for="yes">Yes</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Form Elements</h1>
+                    <p>High-quality, accessible form controls are the backbone of any application. These elements are styled to be clean and consistent.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                        </div>
+                        <button class="copy-button">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="text-input"><code class="language-html">&lt;label for="name"&gt;Name&lt;/label&gt;
+&lt;input type="text" id="name" placeholder="Enter your name..."&gt;</code></pre>
+                            <pre data-code-id="textarea" style="display: none;"><code class="language-html">&lt;label for="bio"&gt;Biography&lt;/label&gt;
+&lt;textarea id="bio" rows="4" placeholder="..."&gt;&lt;/textarea&gt;</code></pre>
+                            <pre data-code-id="select" style="display: none;"><code class="language-html">&lt;label for="role"&gt;Role&lt;/label&gt;
+&lt;select id="role"&gt;
+  &lt;option&gt;Select a role...&lt;/option&gt;
+  &lt;option&gt;Designer&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                            <pre data-code-id="checkbox-radio" style="display: none;"><code class="language-html">&lt;!-- Checkbox --&gt;
+&lt;div class="checkbox-group"&gt;
+    &lt;input type="checkbox" id="terms" class="custom-checkbox"&gt;
+    &lt;label for="terms"&gt;I agree to the terms&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Radio Button --&gt;
+&lt;div class="radio-group"&gt;
+    &lt;input type="radio" id="yes" name="confirm" class="custom-radio"&gt;
+    &lt;label for="yes"&gt;Yes&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="text-input"><code class="language-css">input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  font-family: var(--body-font);
+  font-size: var(--para-size);
+}
+input:focus {
+  outline: none;
+  border-color: var(--primary-text);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+}</code></pre>
+                            <pre data-code-id="textarea" style="display: none;"><code class="language-css">/* Uses the same base styles as input[type="text"] */</code></pre>
+                            <pre data-code-id="select" style="display: none;"><code class="language-css">/* Uses the same base styles as input[type="text"] */</code></pre>
+                            <pre data-code-id="checkbox-radio" style="display: none;"><code class="language-css">.custom-checkbox, .custom-radio {
+  /* Hides the default browser input */
+  opacity: 0;
+  position: absolute;
+}
+.custom-checkbox + label,
+.custom-radio + label {
+  position: relative;
+  padding-left: 28px; /* Space for custom input */
+  cursor: pointer;
+}
+/* For more styling details, see main.css */</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const openBtn = document.getElementById('open-sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    if (openBtn && sidebar) {
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('sidebar--open');
+        });
+    }
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar--open');
+        });
+    }
+       // The existing JavaScript from buttons.html works perfectly here too!
+       const exampleGroups = document.querySelectorAll('.example-group');const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');exampleGroups.forEach(group => {group.addEventListener('click', () => {exampleGroups.forEach(g => g.classList.remove('active'));group.classList.add('active');const codeId = group.dataset.codeId;allCodeBlocks.forEach(block => block.style.display = 'none');const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);relevantCodeBlocks.forEach(block => block.style.display = 'block');});});const tabsContainer = document.querySelector('.code-snippet__tabs');const contentPanels = document.querySelectorAll('.code-snippet__content');const copyButton = document.querySelector('.copy-button');const copyTextarea = document.getElementById('copy-textarea');if (tabsContainer) {tabsContainer.addEventListener('click', (e) => {if (e.target.tagName === 'BUTTON') {const targetTab = e.target.dataset.tab;tabsContainer.querySelector('.active').classList.remove('active');e.target.classList.add('active');contentPanels.forEach(panel => {panel.classList.remove('active');if (panel.dataset.content === targetTab) {panel.classList.add('active');}});}});}if (copyButton) {copyButton.addEventListener('click', () => {const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';if (codeToCopy) {copyTextarea.value = codeToCopy;copyTextarea.select();try {document.execCommand('copy');const copyButtonText = copyButton.querySelector('span');copyButtonText.innerText = 'Copied!';setTimeout(() => {copyButtonText.innerText = 'Copy';}, 2000);} catch (err) {console.error('Failed to copy text: ', err);}}});}
+    </script>
+</body>
+</html>

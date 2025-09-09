@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="standard">
+                    <h3 class="example-group__title">Standard Modal</h3>
+                    <div class="example-group__item--column">
+                        <div class="preview-container preview-container--modal">
+                            <div class="modal-overlay" style="position: absolute; display: flex;">
+                                <div class="modal" style="position: relative; transform: none; opacity: 1;">
+                                    <div class="modal__header">
+                                        <h3 class="modal__title">Modal Title</h3>
+                                        <button class="modal__close">&times;</button>
+                                    </div>
+                                    <div class="modal__body">
+                                        <p>This is the main content of the modal. It can contain text, forms, or any other elements.</p>
+                                    </div>
+                                    <div class="modal__footer">
+                                        <button class="btn">Cancel</button>
+                                        <button class="btn btn--primary">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Modal</h1>
+                    <p>Modals are used to display content or require user action in a layer above the main page. The underlying page is typically disabled until the user interacts with the modal.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                            <button class="code-snippet__tab" data-tab="js">JS</button>
+                        </div>
+                        <button class="copy-button">
+                           <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="standard"><code class="language-html">&lt;!-- Button to trigger the modal --&gt;
+&lt;button class="btn" id="openModalBtn"&gt;Open Modal&lt;/button&gt;
+
+&lt;!-- The Modal Structure --&gt;
+&lt;div class="modal-overlay" id="myModal"&gt;
+  &lt;div class="modal"&gt;
+    &lt;div class="modal__header"&gt;
+      &lt;h3 class="modal__title"&gt;Modal Title&lt;/h3&gt;
+      &lt;button class="modal__close" id="closeModalBtn"&gt;&times;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal__body"&gt;
+      &lt;p&gt;This is the main content of the modal.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal__footer"&gt;
+      &lt;button class="btn"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn--primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="standard"><code class="language-css">.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-overlay.active {
+  display: flex; /* Shown with JS */
+}
+.modal {
+  background: var(--color-bg);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--dark-box-shadow);
+  width: 90%;
+  max-width: 500px;
+}
+/* See main.css for full styling */</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="js">
+                            <pre data-code-id="standard"><code class="language-javascript">const openBtn = document.getElementById('openModalBtn');
+const closeBtn = document.getElementById('closeModalBtn');
+const modal = document.getElementById('myModal');
+
+openBtn.addEventListener('click', () => {
+  modal.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+// Optional: Close when clicking overlay
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const openBtn = document.getElementById('open-sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    if (openBtn && sidebar) {
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('sidebar--open');
+        });
+    }
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar--open');
+        });
+    }
+       const exampleGroups = document.querySelectorAll('.example-group');const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');exampleGroups.forEach(group => {group.addEventListener('click', () => {exampleGroups.forEach(g => g.classList.remove('active'));group.classList.add('active');const codeId = group.dataset.codeId;allCodeBlocks.forEach(block => block.style.display = 'none');const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);relevantCodeBlocks.forEach(block => block.style.display = 'block');});});const tabsContainer = document.querySelector('.code-snippet__tabs');const contentPanels = document.querySelectorAll('.code-snippet__content');const copyButton = document.querySelector('.copy-button');const copyTextarea = document.getElementById('copy-textarea');if (tabsContainer) {tabsContainer.addEventListener('click', (e) => {if (e.target.tagName === 'BUTTON') {const targetTab = e.target.dataset.tab;tabsContainer.querySelector('.active').classList.remove('active');e.target.classList.add('active');contentPanels.forEach(panel => {panel.classList.remove('active');if (panel.dataset.content === targetTab) {panel.classList.add('active');}});}});}if (copyButton) {copyButton.addEventListener('click', () => {const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';if (codeToCopy) {copyTextarea.value = codeToCopy;copyTextarea.select();try {document.execCommand('copy');const copyButtonText = copyButton.querySelector('span');copyButtonText.innerText = 'Copied!';setTimeout(() => {copyButtonText.innerText = 'Copy';}, 2000);} catch (err) {console.error('Failed to copy text: ', err);}}});}
+    </script>
+</body>
+</html>

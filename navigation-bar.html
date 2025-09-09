@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="standard">
+                    <h3 class="example-group__title">Standard Navigation Bar</h3>
+                    <div class="example-group__item--column">
+                        <div class="preview-container">
+                            <nav class="navbar">
+                                <a href="#" class="navbar__brand">Axiom Kit</a>
+                                <ul class="navbar__links">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                                <button class="btn btn--primary">Get Started</button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-group" data-code-id="dark">
+                    <h3 class="example-group__title">Dark Navigation Bar</h3>
+                    <div class="example-group__item--column">
+                        <div class="preview-container">
+                            <nav class="navbar navbar--dark">
+                                <a href="#" class="navbar__brand">Axiom Kit</a>
+                                <ul class="navbar__links">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                                <button class="btn">Get Started</button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Navigation Bar</h1>
+                    <p>The navigation bar is a primary layout component that provides site navigation and branding at the top of a page.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                        </div>
+                        <button class="copy-button">
+                           <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="standard"><code class="language-html">&lt;nav class="navbar"&gt;
+  &lt;a href="#" class="navbar__brand"&gt;Axiom Kit&lt;/a&gt;
+  &lt;ul class="navbar__links"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button class="btn btn--primary"&gt;Get Started&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+                            <pre data-code-id="dark" style="display: none;"><code class="language-html">&lt;!-- Add the .navbar--dark modifier class --&gt;
+&lt;nav class="navbar navbar--dark"&gt;
+  &lt;!-- ... same content ... --&gt;
+&lt;/nav&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="standard"><code class="language-css">.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+.navbar__brand {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: var(--h3-size);
+}
+.navbar__links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}</code></pre>
+                            <pre data-code-id="dark" style="display: none;"><code class="language-css">.navbar--dark {
+  background-color: var(--dark-subtle-bg);
+  border-bottom: 1px solid var(--dark-border-color);
+}
+.navbar--dark .navbar__brand,
+.navbar--dark .navbar__links a {
+  color: var(--dark-primary-text);
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const openBtn = document.getElementById('open-sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    if (openBtn && sidebar) {
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('sidebar--open');
+        });
+    }
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar--open');
+        });
+    }
+       const exampleGroups = document.querySelectorAll('.example-group');const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');exampleGroups.forEach(group => {group.addEventListener('click', () => {exampleGroups.forEach(g => g.classList.remove('active'));group.classList.add('active');const codeId = group.dataset.codeId;allCodeBlocks.forEach(block => block.style.display = 'none');const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);relevantCodeBlocks.forEach(block => block.style.display = 'block');});});const tabsContainer = document.querySelector('.code-snippet__tabs');const contentPanels = document.querySelectorAll('.code-snippet__content');const copyButton = document.querySelector('.copy-button');const copyTextarea = document.getElementById('copy-textarea');if (tabsContainer) {tabsContainer.addEventListener('click', (e) => {if (e.target.tagName === 'BUTTON') {const targetTab = e.target.dataset.tab;tabsContainer.querySelector('.active').classList.remove('active');e.target.classList.add('active');contentPanels.forEach(panel => {panel.classList.remove('active');if (panel.dataset.content === targetTab) {panel.classList.add('active');}});}});}if (copyButton) {copyButton.addEventListener('click', () => {const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';if (codeToCopy) {copyTextarea.value = codeToCopy;copyTextarea.select();try {document.execCommand('copy');const copyButtonText = copyButton.querySelector('span');copyButtonText.innerText = 'Copied!';setTimeout(() => {copyButtonText.innerText = 'Copy';}, 2000);} catch (err) {console.error('Failed to copy text: ', err);}}});}
+    </script>
+</body>
+</html>

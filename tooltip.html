@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip - Axiom Kit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="light-mode">
+
+    <div class="split-layout-container">
+        <aside class="split-layout__visual">
+            <div class="visual-panel-content">
+                <a href="components.html" class="back-link">&larr; All Components</a>
+                <h2 class="visual-panel-title">Live Preview</h2>
+                
+                <div class="example-group active" data-code-id="top">
+                    <h3 class="example-group__title">Tooltip on Top (Default)</h3>
+                    <div class="example-group__item">
+                        <button class="btn preview-tooltip" data-tooltip="This is a tooltip!">Hover over me</button>
+                    </div>
+                </div>
+
+                <div class="example-group" data-code-id="positions">
+                    <h3 class="example-group__title">Other Positions</h3>
+                    <div class="example-group__item">
+                        <button class="btn preview-tooltip" data-tooltip="Tooltip on the right" data-tooltip-position="right">Right</button>
+                        <button class="btn preview-tooltip" data-tooltip="Tooltip on the bottom" data-tooltip-position="bottom">Bottom</button>
+                        <button class="btn preview-tooltip" data-tooltip="Tooltip on the left" data-tooltip-position="left">Left</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="split-layout__content">
+            <div class="content-panel-body">
+                <header class="content-header">
+                    <h1>Tooltip</h1>
+                    <p>Tooltips provide brief, contextual information on hover. They are implemented here using pure CSS with data attributes for simplicity and performance.</p>
+                </header>
+
+                <section class="code-snippet-container">
+                    <div class="code-snippet__header">
+                        <div class="code-snippet__tabs">
+                            <button class="code-snippet__tab active" data-tab="html">HTML</button>
+                            <button class="code-snippet__tab" data-tab="css">CSS</button>
+                        </div>
+                        <button class="copy-button">
+                           <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="code-snippet__body">
+                        <div class="code-snippet__content active" data-content="html">
+                            <pre data-code-id="top"><code class="language-html">&lt;!-- Add the data-tooltip attribute to any element --&gt;
+&lt;button class="btn" data-tooltip="This is a tooltip!"&gt;
+  Hover over me
+&lt;/button&gt;</code></pre>
+                            <pre data-code-id="positions" style="display: none;"><code class="language-html">&lt;!-- Use data-tooltip-position to change the location --&gt;
+&lt;button data-tooltip="Tooltip on the right" data-tooltip-position="right"&gt;Right&lt;/button&gt;
+&lt;button data-tooltip="Tooltip on the bottom" data-tooltip-position="bottom"&gt;Bottom&lt;/button&gt;
+&lt;button data-tooltip="Tooltip on the left" data-tooltip-position="left"&gt;Left&lt;/button&gt;</code></pre>
+                        </div>
+                        <div class="code-snippet__content" data-content="css">
+                            <pre data-code-id="top"><code class="language-css">/* Base element needs relative positioning */
+[data-tooltip] {
+  position: relative;
+}
+/* The tooltip bubble */
+[data-tooltip]::before {
+  content: attr(data-tooltip); /* Use attribute content */
+  position: absolute;
+  bottom: 100%; /* Position above the element */
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  /* Styling */
+  background: var(--primary-text);
+  color: var(--color-bg);
+  /* ... see main.css for full styling ... */
+}
+/* Show on hover */
+[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+}</code></pre>
+                            <pre data-code-id="positions" style="display: none;"><code class="language-css">/* For a right-positioned tooltip */
+[data-tooltip-position="right"]::before {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+}
+[data-tooltip-position="right"]::after {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  margin-left: -2px;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const openBtn = document.getElementById('open-sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    if (openBtn && sidebar) {
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('sidebar--open');
+        });
+    }
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar--open');
+        });
+    }
+       const exampleGroups = document.querySelectorAll('.example-group');const allCodeBlocks = document.querySelectorAll('.code-snippet__content pre');exampleGroups.forEach(group => {group.addEventListener('click', () => {exampleGroups.forEach(g => g.classList.remove('active'));group.classList.add('active');const codeId = group.dataset.codeId;allCodeBlocks.forEach(block => block.style.display = 'none');const relevantCodeBlocks = document.querySelectorAll(`.code-snippet__content pre[data-code-id="${codeId}"]`);relevantCodeBlocks.forEach(block => block.style.display = 'block');});});const tabsContainer = document.querySelector('.code-snippet__tabs');const contentPanels = document.querySelectorAll('.code-snippet__content');const copyButton = document.querySelector('.copy-button');const copyTextarea = document.getElementById('copy-textarea');if (tabsContainer) {tabsContainer.addEventListener('click', (e) => {if (e.target.tagName === 'BUTTON') {const targetTab = e.target.dataset.tab;tabsContainer.querySelector('.active').classList.remove('active');e.target.classList.add('active');contentPanels.forEach(panel => {panel.classList.remove('active');if (panel.dataset.content === targetTab) {panel.classList.add('active');}});}});}if (copyButton) {copyButton.addEventListener('click', () => {const activeCodeBlock = document.querySelector('.code-snippet__content.active pre[style*="display: block"]');const codeToCopy = activeCodeBlock ? activeCodeBlock.querySelector('code').innerText : '';if (codeToCopy) {copyTextarea.value = codeToCopy;copyTextarea.select();try {document.execCommand('copy');const copyButtonText = copyButton.querySelector('span');copyButtonText.innerText = 'Copied!';setTimeout(() => {copyButtonText.innerText = 'Copy';}, 2000);} catch (err) {console.error('Failed to copy text: ', err);}}});}
+    </script>
+</body>
+</html>
