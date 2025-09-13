@@ -2032,3 +2032,101 @@ textarea {
         height: auto;
     }
 }
+
+/* ---
+   Final Responsive Styles
+   --- */
+
+/* Apply these styles only on screens 768px wide or smaller */
+@media (max-width: 768px) {
+
+    /* --- General Adjustments for Mobile --- */
+    .component-grid,
+    .split-layout__content {
+        padding: var(--space-lg); /* Reduce padding on mobile */
+    }
+
+    .page-title,
+    .component-section-title {
+        font-size: var(--h2-size); /* Make titles a bit smaller */
+    }
+
+    /* --- Fix for Components Dashboard Page --- */
+    .dashboard-container {
+        /* Change to a single column layout */
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        /* Take up the full screen and hide off-screen to the left */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100%;
+        z-index: 1001; /* Make sure it's above everything */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .sidebar--open {
+        /* This class will be toggled by JS to show the sidebar */
+        transform: translateX(0);
+        box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    .sidebar__close {
+        /* Show the close button on mobile */
+        display: block;
+        background: none;
+        border: none;
+        color: var(--dark-primary-text);
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .sidebar-toggle {
+        /* Show the hamburger button on mobile */
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        background: var(--color-bg);
+        border: 1px solid var(--border-color);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: var(--border-radius);
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: var(--space-md);
+    }
+    .sidebar-toggle svg {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+    }
+
+
+    /* --- Fix for Split-Screen Component Pages --- */
+    .split-layout-container {
+        /* Change to a single column layout */
+        grid-template-columns: 1fr;
+    }
+    
+    .split-layout__visual {
+        /* Un-stick the visual panel and let its height be natural */
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .content-header h1 {
+        font-size: calc(var(--h1-size) * 1.2);
+    }
+    .content-header p {
+        font-size: var(--para-size);
+    }
+}
