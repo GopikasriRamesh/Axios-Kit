@@ -2130,3 +2130,33 @@ textarea {
         font-size: var(--para-size);
     }
 }
+
+/* ---
+   Robust Responsive Fix for Split-Screen Pages
+   --- */
+
+@media (max-width: 900px) {
+    .split-layout-container {
+        /* Force the container to stop being a grid and just be a block */
+        display: block;
+    }
+    
+    .split-layout__visual {
+        /* Un-stick the visual panel */
+        position: static;
+        height: auto; /* Let height be natural */
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 50vh; /* Prevent it from being too tall on mobile */
+        overflow-y: auto;
+    }
+
+    .split-layout__content {
+        padding: var(--space-lg); /* Ensure consistent padding */
+    }
+
+    .content-header h1 {
+        /* Reduce title size on mobile for better fit */
+        font-size: calc(var(--h1-size) * 1.2);
+    }
+}
