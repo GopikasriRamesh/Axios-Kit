@@ -2132,31 +2132,59 @@ textarea {
 }
 
 /* ---
-   Robust Responsive Fix for Split-Screen Pages
+   FINAL ROBUST RESPONSIVE STYLES
    --- */
 
+/* --- Mobile Styles for All Component Pages (max-width: 900px) --- */
 @media (max-width: 900px) {
-    .split-layout-container {
-        /* Force the container to stop being a grid and just be a block */
-        display: block;
+    /* Target the container with high specificity to ensure it overrides desktop styles */
+    body .split-layout-container {
+        display: block; /* Force it to stack, breaking the grid */
+        grid-template-columns: 1fr; /* Redundant but safe */
     }
     
-    .split-layout__visual {
-        /* Un-stick the visual panel */
-        position: static;
-        height: auto; /* Let height be natural */
+    body .split-layout__visual {
+        position: static; /* Un-stick the visual panel */
+        height: auto;
+        max-height: 60vh; /* Prevent preview from taking too much vertical space */
         border-right: none;
         border-bottom: 1px solid var(--border-color);
-        max-height: 50vh; /* Prevent it from being too tall on mobile */
-        overflow-y: auto;
     }
 
-    .split-layout__content {
-        padding: var(--space-lg); /* Ensure consistent padding */
+    body .split-layout__content {
+        padding: var(--space-lg);
+    }
+    
+    /* Ensure the hamburger menu is visible if you add it to these pages */
+    .sidebar-toggle {
+        display: flex;
+    }
+}
+
+
+/* --- Mobile Styles for the MAIN Components Dashboard (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
     }
 
-    .content-header h1 {
-        /* Reduce title size on mobile for better fit */
-        font-size: calc(var(--h1-size) * 1.2);
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100%;
+        z-index: 1001;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .sidebar--open {
+        transform: translateX(0);
+        box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    .sidebar__close {
+        display: block;
     }
 }
